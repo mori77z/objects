@@ -11,13 +11,13 @@ document.body.appendChild(zoomedContainer);
 // Function to open zoomed image
 function openZoomedImage(src) {
     zoomedImage.src = src;
-    zoomedImage.classList.add("active"); // Hinzufügen der aktiven Klasse für Animation
+    zoomedImage.classList.add("active");
     zoomedContainer.classList.add("active");
 }
 
 // Function to close zoomed image
 function closeZoomedImage() {
-    zoomedImage.classList.remove("active"); // Entfernen der aktiven Klasse
+    zoomedImage.classList.remove("active");
     zoomedContainer.classList.remove("active");
 }
 
@@ -60,3 +60,28 @@ arrowRight.forEach(arrow => {
         }
     });
 });
+
+// Dark Mode Font and Color Cycle
+const fonts = ["Helvetica", "Arial", "Courier", "Times", "Verdana"];
+const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff"];  // RGB Farben
+
+let currentFontIndex = 0;
+let currentColorIndex = 0;
+
+// Function to update font and color in dark mode
+function updateFontAndColor() {
+    const headers = document.querySelectorAll("h1, .header-container h1");  // H1 und Header
+    headers.forEach(header => {
+        header.style.fontFamily = fonts[currentFontIndex];
+        header.style.color = colors[currentColorIndex];
+        header.style.fontWeight = "bold";
+    });
+    
+    currentFontIndex = (currentFontIndex + 1) % fonts.length;
+    currentColorIndex = (currentColorIndex + 1) % colors.length;
+}
+
+// Trigger the font and color update every 3 seconds in dark mode
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setInterval(updateFontAndColor, 3000);
+}

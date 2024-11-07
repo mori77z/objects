@@ -51,10 +51,9 @@ h1 a:hover {
 
 nav {
     display: flex;
-    width: 100vw;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 10px;
+    margin-top: 10px;
     margin-bottom: 10px;
     background-color: inherit;
 }
@@ -202,22 +201,20 @@ nav a.active {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #ddd;
+        background-color: #121212;
         color: white;
     }
 
     header, h1 {
         font-weight: bold;
     }
-
-    /* Farben und Schriftart durch CSS-Variablen */
-    header, h1 {
+    header, h1, h2 {
         font-family: var(--current-font, Helvetica, sans-serif);
         color: var(--current-color, white);
     }
 
-    nav, .info a, .arrow_left, .arrow_right {
-        color: #39FF14; /* Neongrün */
+   .arrow_left, .arrow_right {
+        color: #39FF14; 
     }
 }
 

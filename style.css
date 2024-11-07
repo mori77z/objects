@@ -8,12 +8,22 @@ body {
     padding: 0;
 }
 
-header {
+.header-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
     overflow: visible;
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 h1 {
@@ -45,6 +55,7 @@ nav {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 10px;
+    background-color: inherit;
 }
 
 nav a {
@@ -188,11 +199,26 @@ nav a.active {
     transition: transform 0.3s ease-in-out;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     body {
-        background-color: #fc4022;
+        background-color: #ddd;
+        color: white;
     }
-} */
+
+    header, h1 {
+        font-weight: bold;
+    }
+
+    /* Farben und Schriftart durch CSS-Variablen */
+    header, h1 {
+        font-family: var(--current-font, Helvetica, sans-serif);
+        color: var(--current-color, white);
+    }
+
+    nav, .info a, .arrow_left, .arrow_right {
+        color: #39FF14; /* Neongrün */
+    }
+}
 
 @media (min-width: 768px) {
     h1 {

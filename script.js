@@ -36,8 +36,8 @@ zoomedContainer.addEventListener("click", (e) => {
 });
 
 // Arrow scroll functionality for left/right arrows outside the carousel
-const arrowLeft = document.querySelectorAll(".arrow_left");
-const arrowRight = document.querySelectorAll(".arrow_right");
+const arrowLeft = document.querySelectorAll("#arrow_left"); // Updated to target the specific ID
+const arrowRight = document.querySelectorAll("#arrow_right"); // Updated to target the specific ID
 
 arrowLeft.forEach(arrow => {
     arrow.addEventListener("click", function () {
@@ -61,16 +61,15 @@ arrowRight.forEach(arrow => {
     });
 });
 
-// Dark Mode Font and Color Cycle
+// Dark Mode Font and Color Cycle (no interval, manual update)
 const fonts = ["Helvetica", "Arial", "Courier", "Times", "Verdana"];
 const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff"];  // RGB Farben
-
 let currentFontIndex = 0;
 let currentColorIndex = 0;
 
-// Function to update font and color in dark mode
+// Function to update font and color
 function updateFontAndColor() {
-    const headers = document.querySelectorAll("h1, .header-container h1");  // H1 und Header
+    const headers = document.querySelectorAll("h1, .header-container h1, .info h2");  // H1, Header, and H2 in info class
     headers.forEach(header => {
         header.style.fontFamily = fonts[currentFontIndex];
         header.style.color = colors[currentColorIndex];
@@ -81,7 +80,7 @@ function updateFontAndColor() {
     currentColorIndex = (currentColorIndex + 1) % colors.length;
 }
 
-// Trigger the font and color update every 3 seconds in dark mode
+// Trigger the font and color update when desired (no interval, so call this manually)
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    setInterval(updateFontAndColor, 3000);
+    updateFontAndColor();  // Manually call on dark mode
 }

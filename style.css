@@ -30,8 +30,8 @@ body {
     font-size: 30px;
     font-weight: normal;
     line-height: 36px;
-    color: black;
-    font-family: Helvetica, sans-serif;
+    color: var(--current-color, black);
+    font-family: var(--current-font, Helvetica, sans-serif);
     margin: 0;
     white-space: nowrap;
     box-sizing: border-box; 
@@ -115,6 +115,8 @@ nav a.active {
     font-size: 24px;
     font-weight: normal;
     margin: 0;
+    color: var(--current-color, black);
+    font-family: var(--current-font, Helvetica, sans-serif);
 }
 
 .info p {

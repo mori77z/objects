@@ -28,7 +28,7 @@ body {
 
 .@font-face {
     font-family: 'TimesNewArial';
-    src: url('https://github.com/mori77z/mori77z.github.io/raw/refs/heads/main/assets/timesnewarial.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/mori77z/mori77z.github.io/refs/heads/main/assets/timesnewarial.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

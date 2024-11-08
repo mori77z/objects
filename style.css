@@ -26,7 +26,7 @@ body {
     align-items: flex-start;
 }
 
-h1 {
+.logo h1 {
     font-size: 30px;
     font-weight: normal;
     line-height: 36px;
@@ -37,12 +37,12 @@ h1 {
     box-sizing: border-box; 
 }
 
-h1 a {
+.logo h1 a {
     text-decoration: none;
     color: black;
 }
 
-h1 a:hover {
+.logo h1 a:hover {
     font-family: Georgia, serif;
     text-decoration: underline;
     font-style: italic;
@@ -206,11 +206,11 @@ nav a.active {
         color: white;
     }
 
-    h1 {
+    .logo h1 {
         font-family: var(--current-font, Helvetica, sans-serif);
         color: var(--current-color, white);
     }
-    h2 {
+    .info h2 {
         font-family: var(--current-font, Helvetica, sans-serif);
         color: var(--current-color, white);
         font-weight: bold;
@@ -222,7 +222,7 @@ nav a.active {
 }
 
 @media (min-width: 768px) {
-    h1 {
+    .logo h1 {
         font-size: 48px;
     }
     .zoomed-image {

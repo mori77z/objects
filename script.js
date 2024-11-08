@@ -1,4 +1,4 @@
-// Bildauswahl und Erstellen des Zoom-Containers
+// Select images and create a zoom container
 const images = document.querySelectorAll(".img-container img");
 const zoomedContainer = document.createElement("div");
 const zoomedImage = document.createElement("img");
@@ -8,36 +8,36 @@ zoomedImage.classList.add("zoomed-image");
 zoomedContainer.appendChild(zoomedImage);
 document.body.appendChild(zoomedContainer);
 
-// Funktion zum Öffnen des Zoom-Bilds
+// Function to open zoomed image
 function openZoomedImage(src) {
     zoomedImage.src = src;
     zoomedImage.classList.add("active");
     zoomedContainer.classList.add("active");
 }
 
-// Funktion zum Schließen des Zoom-Bilds
+// Function to close zoomed image
 function closeZoomedImage() {
     zoomedImage.classList.remove("active");
     zoomedContainer.classList.remove("active");
 }
 
-// Event-Listener für Bilder zum Öffnen im Zoom-Modus
+// Add event listeners to images to open in zoom
 images.forEach((img) => {
     img.addEventListener("click", () => {
         openZoomedImage(img.src);
     });
 });
 
-// Zoom-Bild schließen, wenn außerhalb des Bildes geklickt wird
+// Close zoomed image when clicking outside the image
 zoomedContainer.addEventListener("click", (e) => {
     if (e.target === zoomedContainer || e.target === zoomedImage) {
         closeZoomedImage();
     }
 });
 
-// Pfeil-Scroll-Funktionalität für Links/Rechts-Pfeile außerhalb des Karussells
-const arrowLeft = document.querySelectorAll("#arrow_left"); 
-const arrowRight = document.querySelectorAll("#arrow_right"); 
+// Arrow scroll functionality for left/right arrows outside the carousel
+const arrowLeft = document.querySelectorAll("#arrow_left"); // Updated to target the specific ID
+const arrowRight = document.querySelectorAll("#arrow_right"); // Updated to target the specific ID
 
 arrowLeft.forEach(arrow => {
     arrow.addEventListener("click", function () {
@@ -61,6 +61,7 @@ arrowRight.forEach(arrow => {
     });
 });
 
+// Pastel RGB colors for random selection
 // Pastellfarben und Schriftarten zur Auswahl
 const pastelColors = [
     'rgb(255, 182, 193)', // Light pink
@@ -109,21 +110,23 @@ function updateFontAndColorForInfo() {
 
 // Initialisiere beim Laden der Seite
 document.addEventListener("DOMContentLoaded", () => {
-    updateFontAndColorForLogo();
-    updateFontAndColorForInfo();
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        updateFontAndColorForLogo();
+        updateFontAndColorForInfo();
 
-    // Intersection Observer für .combined-container
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                updateFontAndColorForLogo();
-                updateFontAndColorForInfo();
-            }
+        // Intersection Observer für .combined-container
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateFontAndColorForLogo();
+                    updateFontAndColorForInfo();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Überwache alle .combined-container Elemente
+        document.querySelectorAll(".combined-container").forEach(section => {
+            observer.observe(section);
         });
-    }, { threshold: 0.5 });
-
-    // Überwache alle .combined-container Elemente
-    document.querySelectorAll(".combined-container").forEach(section => {
-        observer.observe(section);
-    });
+    }
 });

@@ -1,4 +1,4 @@
-// Select images and create a zoom container
+// Bildauswahl und Erstellen des Zoom-Containers
 const images = document.querySelectorAll(".img-container img");
 const zoomedContainer = document.createElement("div");
 const zoomedImage = document.createElement("img");
@@ -8,36 +8,36 @@ zoomedImage.classList.add("zoomed-image");
 zoomedContainer.appendChild(zoomedImage);
 document.body.appendChild(zoomedContainer);
 
-// Function to open zoomed image
+// Funktion zum Öffnen des Zoom-Bilds
 function openZoomedImage(src) {
     zoomedImage.src = src;
     zoomedImage.classList.add("active");
     zoomedContainer.classList.add("active");
 }
 
-// Function to close zoomed image
+// Funktion zum Schließen des Zoom-Bilds
 function closeZoomedImage() {
     zoomedImage.classList.remove("active");
     zoomedContainer.classList.remove("active");
 }
 
-// Add event listeners to images to open in zoom
+// Event-Listener für Bilder zum Öffnen im Zoom-Modus
 images.forEach((img) => {
     img.addEventListener("click", () => {
         openZoomedImage(img.src);
     });
 });
 
-// Close zoomed image when clicking outside the image
+// Zoom-Bild schließen, wenn außerhalb des Bildes geklickt wird
 zoomedContainer.addEventListener("click", (e) => {
     if (e.target === zoomedContainer || e.target === zoomedImage) {
         closeZoomedImage();
     }
 });
 
-// Arrow scroll functionality for left/right arrows outside the carousel
-const arrowLeft = document.querySelectorAll("#arrow_left"); // Updated to target the specific ID
-const arrowRight = document.querySelectorAll("#arrow_right"); // Updated to target the specific ID
+// Pfeil-Scroll-Funktionalität für Links/Rechts-Pfeile außerhalb des Karussells
+const arrowLeft = document.querySelectorAll("#arrow_left"); 
+const arrowRight = document.querySelectorAll("#arrow_right"); 
 
 arrowLeft.forEach(arrow => {
     arrow.addEventListener("click", function () {
@@ -61,7 +61,7 @@ arrowRight.forEach(arrow => {
     });
 });
 
-// Pastel RGB colors for random selection
+// Pastellfarben und Schriftarten zur Auswahl
 const pastelColors = [
     'rgb(255, 182, 193)', // Light pink
     'rgb(173, 216, 230)', // Light blue
@@ -72,71 +72,58 @@ const pastelColors = [
     'rgb(240, 230, 140)', // Olive
     'rgb(186, 85, 211)', // Orchid
     'rgb(255, 160, 122)', // Light salmon
-    'rgb(144, 238, 144)', // Light green
+    'rgb(144, 238, 144)'  // Light green
 ];
 
-// Web-safe fonts for random selection
 const webSafeFonts = [
     'Arial', 'Verdana', 'Helvetica', 'Times New Roman', 'Courier New', 'Georgia', 'Tahoma', 'Trebuchet MS', 'Impact', 'Comic Sans MS'
 ];
 
-// Function to get a random pastel color
+// Funktion für eine zufällige Pastellfarbe
 function getRandomPastelColor() {
     return pastelColors[Math.floor(Math.random() * pastelColors.length)];
 }
 
-// Function to get a random web-safe font
+// Funktion für eine zufällige web-sichere Schriftart
 function getRandomWebSafeFont() {
     return webSafeFonts[Math.floor(Math.random() * webSafeFonts.length)];
 }
 
-// Function to update the font and color for h1 inside .logo
+// Funktion zur Aktualisierung der Schriftart und Farbe für .logo h1
 function updateFontAndColorForLogo() {
-    const logoHeader = document.querySelector(".logo h1");  // Select the h1 inside .logo
+    const logoHeader = document.querySelector(".logo h1");
     if (logoHeader) {
-        const randomFont = getRandomWebSafeFont();  // Get a random font
-        const randomColor = getRandomPastelColor();  // Get a random pastel color
-
-        logoHeader.style.fontFamily = randomFont;  // Apply the random font
-        logoHeader.style.color = randomColor;  // Apply the random color
+        logoHeader.style.fontFamily = getRandomWebSafeFont();
+        logoHeader.style.color = getRandomPastelColor();
     }
 }
 
-// Function to update the font and color for h2 inside .info
+// Funktion zur Aktualisierung der Schriftart und Farbe für .info h2
 function updateFontAndColorForInfo() {
-    const infoHeader = document.querySelector(".info h2");  // Select the h2 inside .info
+    const infoHeader = document.querySelector(".info h2");
     if (infoHeader) {
-        const randomFont = getRandomWebSafeFont();  // Get a random font
-        const randomColor = getRandomPastelColor();  // Get a random pastel color
-
-        infoHeader.style.fontFamily = randomFont;  // Apply the random font
-        infoHeader.style.color = randomColor;  // Apply the random color
+        infoHeader.style.fontFamily = getRandomWebSafeFont();
+        infoHeader.style.color = getRandomPastelColor();
     }
 }
 
-// Intersection Observer to track when the section with .combined-container becomes visible
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // When .combined-container is visible, update the font and color for both h1 and h2
-            updateFontAndColorForLogo();
-            updateFontAndColorForInfo();
-        }
-    });
-}, {
-    threshold: 0.5 // Trigger when 50% of the section is visible
-});
-
-// Select all sections with the class .combined-container and start observing them
-const sections = document.querySelectorAll(".combined-container");
-sections.forEach(section => {
-    observer.observe(section);  // Start observing each section
-});
-
-// Trigger the font and color update when desired (no interval, so call this manually)
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    // Manually update both logo and info when dark mode is active
+// Initialisiere beim Laden der Seite
+document.addEventListener("DOMContentLoaded", () => {
     updateFontAndColorForLogo();
     updateFontAndColorForInfo();
-}
-}
+
+    // Intersection Observer für .combined-container
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                updateFontAndColorForLogo();
+                updateFontAndColorForInfo();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Überwache alle .combined-container Elemente
+    document.querySelectorAll(".combined-container").forEach(section => {
+        observer.observe(section);
+    });
+});

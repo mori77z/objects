@@ -31,7 +31,7 @@ body {
     font-weight: normal;
     line-height: 36px;
     color: black;
-    font-family: 'TimesNewArial', sans-serif;
+    font-family: 'Helvetica', 'DM Sans', sans-serif;
     margin: 0;
     white-space: nowrap;
     box-sizing: border-box; 
@@ -202,7 +202,7 @@ nav a.active {
     transition: transform 0.3s ease-in-out;
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
     body {
         background-color: #444444;
         color: white;
@@ -218,7 +218,7 @@ nav a.active {
    .arrow_left, .arrow_right {
         color: #39FF14; 
     }
-}
+}*/
 
 @media (min-width: 768px) {
     .logo h1 {

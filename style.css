@@ -26,13 +26,6 @@ body {
     align-items: flex-start;
 }
 
-.@font-face {
-    font-family: 'TimesNewArial';
-    src: url('https://raw.githubusercontent.com/mori77z/mori77z.github.io/refs/heads/main/assets/timesnewarial.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .logo h1 {
     font-size: 30px;
     font-weight: normal;

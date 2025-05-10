@@ -66,12 +66,22 @@ body {
     letter-spacing: -2px;
     padding-right: 4px;
 }
+
+.subtitle {
+    font-family: Times, serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: -6px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
 nav {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 20px;
+    margin-top: 6px;
     margin-bottom: 10px;
 }
 
@@ -250,6 +260,10 @@ background-color: #fff;
     .logo a {
         font-size: 72px;
         letter-spacing: -5px;
+    }
+    .subtitle {
+    font-size: 14px;
+    margin-top: -8px;
     }
     .content {
         margin-left: 20px;

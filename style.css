@@ -120,8 +120,6 @@ nav a.active {
  }   
 
  .info {
-    min-height: 120px;
-    overflow: hidden;
     word-wrap: break-word;
     overflow-wrap: break-word;
     padding-left: 10px;

@@ -124,6 +124,7 @@ nav a.active {
     overflow-wrap: break-word;
     padding-left: 10px;
     padding-right: 14px;
+    padding-bottom: 10px;
 }
 
 .info h2 {
@@ -146,8 +147,8 @@ nav a.active {
     color: black;
     font-family: Times, serif;
     text-decoration: underline;
-    line-height: 1.2;
     font-size: 1.2em;
+    margin-top: 4px;
 }
 
 
